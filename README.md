@@ -17,8 +17,20 @@ Open PowerShell and navigate to the project folder:
 
 ```bash
 cd C:\Users\DELL\Downloads\MovieTicket
+```
+
 ### Step 2 — Compile
+
+Compile the C++ program using:
 
 ```bash
 g++ main.cpp -o MovieTicketBookingSystem
+```
+
+### Step 3 — Run
+
+Run the generated executable:
+
+```bash
+.\MovieTicketBookingSystem.exe
 ```
