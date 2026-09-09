@@ -90,15 +90,6 @@ The system provides a **cinema ticket booking counter** through a simple menu-dr
 
 # Noun-Verb Analysis
 
-| Noun Found | Keep as a Class? | Reason |
-|------------|------------------|--------|
-| Cinema | Yes | Represents the cinema and maintains references to its screens. |
-| Movie | Yes | Has its own data such as title, language, and duration. |
-| Screen | Yes | Represents an auditorium and maintains its physical seats. |
-| Show | Yes | Represents a particular screening of a movie on a screen at a specific time and maintains show-specific seats. |
-| Seat | Yes | Represents the physical seat with a seat number and seat type. |
-| ShowSeat | Yes | Represents the availability status of a physical seat for a particular show. |
-| Customer | Yes | Represents the customer who makes a booking. |
-| Booking | Yes | Represents a customer's confirmed ticket booking. |
-| Payment | Yes | Represents the payment made for a booking. |
-| Ticket | Yes | Represents the ticket generated after successful booking. |
+## Noun-Verb Analysis
+
+![Noun-Verb Analysis](noun-verb-analysis.png)
