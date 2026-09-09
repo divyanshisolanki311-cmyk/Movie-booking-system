@@ -102,31 +102,7 @@ The system provides a **cinema ticket booking counter** through a simple menu-dr
 | Payment | Yes | Represents the payment made for a booking. |
 | Ticket | Yes | Represents the ticket generated after successful booking. |## Noun-Verb Analysis
 
-| Noun Found | Keep as a Class? | Reason |
-|---|---|---|
-| Cinema | Yes | Represents the cinema and maintains references to its screens. |
-| Movie | Yes | Has its own data such as title, language, and duration. |
-| Screen | Yes | Represents an auditorium and maintains its physical seats. |
-| Show | Yes | Represents a particular screening of a movie on a screen at a specific time. |
-| Seat | Yes | Represents one physical seat with a seat number and seat type. |
-| ShowSeat | Yes | Represents the availability status of a physical seat for a particular show. |
-| Customer | Yes | Represents a customer and stores information such as name and phone number. |
-| Booking | Yes | Represents a reservation and stores booking details, selected seats, payment, total amount, and status. |
-| Payment | Yes | Abstract class that defines the common payment contract. |
-| UPI | Yes | Represents UPI payment implementation. |
-| Card | Yes | Represents card payment implementation. |
-| Cash | Yes | Represents cash payment implementation. |
-| PriceCalculator | Yes | Calculates seat prices and total booking amount. |
-| TicketPrinter | Yes | Formats and prints booking tickets. |
-| BookingService | Yes | Coordinates booking, seat selection, price calculation, payment and cancellation. |
-| MainMenu | Yes | Provides the user interface and handles menu operations. |
-| Ticket | No | Ticket generation is handled by TicketPrinter. |
-| Seat Layout | No | It is only a display/view of seats, not an independent entity. |
-| Booking ID | No | It is a data member of Booking, not a separate entity. |
-| Show ID | No | It is an attribute of Show. |
-| Price | No | Price is calculated by PriceCalculator. |
-| Payment Method | No | Represented through Payment and its subclasses. |
-| Status | No | Represented using enums such as SeatStatus and BookingStatus. |
+
 
 ## Class Design
 
@@ -201,7 +177,7 @@ MovieTicketBookingSystem/
 ├── main.cpp
 └── README.md
 ```
-##sqmple booking 
+##Sample booking 
 ========================================
         MOVIE TICKET BOOKING SYSTEM
 ========================================
