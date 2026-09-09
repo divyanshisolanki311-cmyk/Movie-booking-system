@@ -90,6 +90,3 @@ The system provides a **cinema ticket booking counter** through a simple menu-dr
 
 # Noun-Verb Analysis
 
-## Noun-Verb Analysis
-
-![Noun-Verb Analysis](noun-verb-analysis.png)
