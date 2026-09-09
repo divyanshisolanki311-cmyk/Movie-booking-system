@@ -17,6 +17,8 @@ Open PowerShell and navigate to the project folder:
 
 ```bash
 cd C:\Users\DELL\Downloads\MovieTicket
-g++ main.cpp -o MovieTicketBookingSystem
-.\MovieTicketBookingSystem.exe
+### Step 2 — Compile
 
+```bash
+g++ main.cpp -o MovieTicketBookingSystem
+```
