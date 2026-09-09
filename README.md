@@ -1,2 +1,20 @@
-# Movie-booking-system
-A menu-driven C++ console-based Movie Ticket Booking System for a single cinema. The system allows customers to view movies and shows, check seat availability, book seats, make payments through UPI/Card/Cash, generate tickets, and cancel bookings.
+# Movie Ticket Booking System
+
+A console-based **Movie Ticket Booking System** built in C++ demonstrating core **Object-Oriented Programming (OOP)** concepts and basic **System Design principles** — similar to how PVR or INOX works, but for a single cinema.
+
+---
+
+## How to Run
+
+### Requirements
+
+- Any C++ compiler that supports **C++17**
+- g++ recommended
+
+### Step 1 — Go to the project folder
+
+Open PowerShell and navigate to the project folder:
+
+```bash
+cd C:\Users\DELL\Downloads\MovieTicket
+g++ main.cpp -o MovieTicketBookingSystem
