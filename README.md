@@ -89,4 +89,177 @@ The system provides a **cinema ticket booking counter** through a simple menu-dr
 ---
 
 # Noun-Verb Analysis
+| Noun Found | Keep as a Class? | Reason |
+|------------|------------------|--------|
+| Cinema | Yes | Represents the cinema and maintains references to its screens. |
+| Movie | Yes | Has its own data such as title, language, and duration. |
+| Screen | Yes | Represents an auditorium and maintains its physical seats. |
+| Show | Yes | Represents a particular screening of a movie on a screen at a specific time and maintains show-specific seats. |
+| Seat | Yes | Represents the physical seat with a seat number and seat type. |
+| ShowSeat | Yes | Represents the availability status of a physical seat for a particular show. |
+| Customer | Yes | Represents the customer who makes a booking. |
+| Booking | Yes | Represents a customer's confirmed ticket booking. |
+| Payment | Yes | Represents the payment made for a booking. |
+| Ticket | Yes | Represents the ticket generated after successful booking. |## Noun-Verb Analysis
 
+| Noun Found | Keep as a Class? | Reason |
+|---|---|---|
+| Cinema | Yes | Represents the cinema and maintains references to its screens. |
+| Movie | Yes | Has its own data such as title, language, and duration. |
+| Screen | Yes | Represents an auditorium and maintains its physical seats. |
+| Show | Yes | Represents a particular screening of a movie on a screen at a specific time. |
+| Seat | Yes | Represents one physical seat with a seat number and seat type. |
+| ShowSeat | Yes | Represents the availability status of a physical seat for a particular show. |
+| Customer | Yes | Represents a customer and stores information such as name and phone number. |
+| Booking | Yes | Represents a reservation and stores booking details, selected seats, payment, total amount, and status. |
+| Payment | Yes | Abstract class that defines the common payment contract. |
+| UPI | Yes | Represents UPI payment implementation. |
+| Card | Yes | Represents card payment implementation. |
+| Cash | Yes | Represents cash payment implementation. |
+| PriceCalculator | Yes | Calculates seat prices and total booking amount. |
+| TicketPrinter | Yes | Formats and prints booking tickets. |
+| BookingService | Yes | Coordinates booking, seat selection, price calculation, payment and cancellation. |
+| MainMenu | Yes | Provides the user interface and handles menu operations. |
+| Ticket | No | Ticket generation is handled by TicketPrinter. |
+| Seat Layout | No | It is only a display/view of seats, not an independent entity. |
+| Booking ID | No | It is a data member of Booking, not a separate entity. |
+| Show ID | No | It is an attribute of Show. |
+| Price | No | Price is calculated by PriceCalculator. |
+| Payment Method | No | Represented through Payment and its subclasses. |
+| Status | No | Represented using enums such as SeatStatus and BookingStatus. |
+
+## Class Design
+
+| Class | Attributes / Data Members | Responsibility | Must NOT Do |
+|---|---|---|---|
+| Movie | title, language, duration | Stores basic movie information | Handle booking, seat management or payment |
+| Seat | seatNumber, seatType | Represents one physical seat and its category | Manage show-specific booking status |
+| Screen | screenNumber, seats | Represents an auditorium and maintains physical seats | Handle booking, payment or price calculation |
+| Cinema | name, screens | Represents the cinema and maintains its screens | Calculate prices, process payments or manage bookings |
+| Show | showId, movie, screen, startTime, showSeats | Represents one movie screening and maintains show-specific seats | Process payments or create bookings |
+| ShowSeat | seat, status | Maintains availability of a seat for a particular show | Create or delete physical seats |
+| Customer | name, phone | Stores customer information | Manage payment or seat availability |
+| Booking | bookingId, customer, show, seats, payment, totalAmount, status | Stores booking details and manages booking state | Implement payment methods or print tickets |
+| Payment (Abstract) | — | Defines the common interface for payment methods | Implement specific UPI, card or cash logic |
+| UpiPayment | upiId | Processes UPI payment | Manage bookings, seats or print tickets |
+| CardPayment | cardNumber | Processes card payment | Manage bookings, seats or print tickets |
+| CashPayment | — | Processes cash payment | Manage bookings or print tickets |
+| PriceCalculator | — | Calculates total booking price based on seat category | Process payment or print tickets |
+| TicketPrinter | — | Formats and displays/prints booking tickets | Calculate price or change booking |
+| BookingService | — | Coordinates the complete booking workflow | Directly implement low-level payment logic |
+| MainMenu | — | Provides the user interface and handles menu operations | Handle low-level booking logic |
+
+## Relationships
+
+| Pair | Relationship | Justification |
+|---|---|---|
+| Cinema — Screen | Aggregation | Cinema stores references to existing Screen objects. Screens can exist independently. |
+| Screen — Seat | Association | Screen maintains references to physical Seat objects. |
+| Show — Movie | Association | Show refers to an existing Movie. |
+| Show — Screen | Association | Show uses a Screen for a particular screening. |
+| Show — ShowSeat | Composition | Show creates and manages ShowSeat objects whose lifetime depends on the Show. |
+| ShowSeat — Seat | Association | ShowSeat refers to an existing physical Seat. |
+| Booking — Customer | Association | Booking refers to the customer making the reservation. |
+| Booking — Show | Association | Booking refers to the selected Show. |
+| Booking — Payment | Association | Booking uses a Payment object to process payment. |
+| Payment — UpiPayment | Inheritance | UpiPayment implements the Payment interface/abstract class. |
+| Payment — CardPayment | Inheritance | CardPayment implements the Payment interface/abstract class. |
+| Payment — CashPayment | Inheritance | CashPayment implements the Payment interface/abstract class. |
+| BookingService — Booking | Association | BookingService coordinates the booking process. |
+| BookingService — PriceCalculator | Association | BookingService uses PriceCalculator to calculate the total price. |
+| BookingService — TicketPrinter | Association | BookingService uses TicketPrinter to generate the ticket. |
+
+## Project Structure
+
+```text
+MovieTicketBookingSystem/
+│
+├── docs/
+│   ├── Class Diagram.png
+│   ├── noun_verb.png
+│   ├── Sequence Diagrams.png
+│   └── SOLID PRINCIPLES.png
+│
+├── app.exe
+├── Booking.cpp
+├── BookingService.cpp
+├── CardPayment.cpp
+├── CashPayment.cpp
+├── Cinema.cpp
+├── Customer.cpp
+├── Implementation.cpp
+├── MainMenu.cpp
+├── Movie.cpp
+├── Payment.cpp
+├── PriceCalculator.cpp
+├── Screen.cpp
+├── Seat.cpp
+├── Show.cpp
+├── ShowSeat.cpp
+├── TicketPrinter.cpp
+├── UpiPayment.cpp
+├── main.cpp
+└── README.md
+```
+##sqmple booking 
+========================================
+        MOVIE TICKET BOOKING SYSTEM
+========================================
+
+1. List Movies
+2. List Shows for a Movie
+3. Display Seats for a Show
+4. Book Seats
+5. Cancel Booking
+6. Exit
+
+Enter choice: 4
+
+Enter Show ID: 1
+
+Selected Movie: Avengers: Endgame
+Show Time: 10:00 AM
+
+Seat A1 [PLATINUM] - AVAILABLE
+Seat A2 [PLATINUM] - AVAILABLE
+Seat B1 [GOLD] - AVAILABLE
+Seat B2 [GOLD] - AVAILABLE
+Seat C1 [SILVER] - AVAILABLE
+Seat C2 [SILVER] - AVAILABLE
+
+Enter number of seats to book: 1
+Enter seat number 1: A1
+
+Enter customer name: Divyanshi 
+Enter phone number: 9812345600
+
+========================================
+             PAYMENT METHOD
+========================================
+
+1. UPI
+2. Card
+3. Cash
+
+Enter choice: 1
+Enter UPI ID: Divyanshi@upi
+
+Sending Rs. 400 via UPI
+UPI payment successful.
+
+========================================
+                 TICKET
+========================================
+
+Booking ID : 1001
+Customer   : Divyanshi 
+Phone      : 9812345600
+Movie      : Avengers: Endgame
+Screen     : 1
+Show Time  : 10:00 AM
+Seats      : A1
+Paid via   : UPI
+Total      : Rs.400.00
+Status     : CONFIRMED
+
+========================================
